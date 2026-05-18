@@ -1,5 +1,7 @@
 #include "sort_bus_lines.h"
 
+// Initialize tracer to NULL
+BubbleTracer bubble_sort_tracer = NULL;
 
 void swap_buses(BusLine *a, BusLine *b) {
     BusLine temp = *a;
@@ -7,10 +9,12 @@ void swap_buses(BusLine *a, BusLine *b) {
     *b = temp;
 }
 
-
 void bus_bubble_sort(BusLine *start, BusLine *end) {
     for (BusLine *i = start; i <= end; i++) {
         for (BusLine *j = start; j < end - (i - start); j++) {
+            if (bubble_sort_tracer) {
+                bubble_sort_tracer(start, end, i, j);
+            }
             if (strcmp(j->name, (j + 1)->name) > 0) {
                 swap_buses(j, j + 1);
             }

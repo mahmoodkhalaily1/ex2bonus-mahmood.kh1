@@ -19,6 +19,10 @@ typedef enum SortType
     FREQUENCY
 } SortType;
 
+// Visualization Tracer Callback
+typedef void (*BubbleTracer)(BusLine *start, BusLine *end, BusLine *i, BusLine *j);
+extern BubbleTracer bubble_sort_tracer;
+
 /**
  * TODO add documentation
  */
